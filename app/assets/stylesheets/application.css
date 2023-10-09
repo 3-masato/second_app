@@ -119,6 +119,60 @@ main {
   text-overflow: ellipsis;
 }
 
+.form-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-container fieldset {
+  border: none;
+}
+
+.form-container textarea {
+  height: 250px;
+  min-height: 3rem;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  resize: vertical;
+}
+
+input[type="button"], input[type="submit"], button {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--tertiary-color);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  filter: none;
+  transition: ease-out 120ms;
+}
+
+:is(input[type="button"], input[type="submit"], button):hover {
+  filter: saturate(1.5);
+}
+
+:is(input[type="button"], input[type="submit"], button):active {
+  filter: saturate(0.5);
+}
+
+.error-message {
+  font-size: 0.8rem;
+  color: red;
+}
+
 footer {
   display: grid;
   place-items: center;
