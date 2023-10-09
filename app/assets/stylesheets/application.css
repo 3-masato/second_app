@@ -20,6 +20,17 @@
   --primary-color: #DCE6E6;
   --secondary-color: #E6EFDF;
   --tertiary-color: #EFE1D1;
+
+  /* main要素のpadding値 */
+  --index-p: 1rem;
+  /* ポスト間のgap値 */
+  --posts-g: 20px;
+  /* ポスト折返しの回数 */
+  --posts-c: 4;
+  /* ポストの横幅 */
+  --post-w: 200px;
+  /* ポストの縦幅 */
+  --post-h: 250px;
 }
 
 * {
@@ -33,6 +44,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   color: var(--text-color);
+  background-color: #fcfcfc;
 }
 
 header, h1, nav, .list-comment {
@@ -79,29 +91,30 @@ nav {
 
 main {
   width: 100%;
-  max-width: 880px;
+  /* (左右のpadding値) + (ポストの横幅 * 個数) + (ポスト間のgap * (個数 - 1)) */
+  max-width: calc(
+    (var(--index-p) * 2) +
+    (var(--post-w) * var(--posts-c)) +
+    (var(--posts-g) * (var(--posts-c) - 1))
+  );
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--index-p);
   background-color: var(--base-color);
 }
 
 .list-wrap {
   display: flex;
   flex-wrap: wrap;
+  gap: var(--posts-g);
 }
 
 .list-box {
-  width: 200px;
-  height: 250px;
-  margin: 10px;
-  position: relative;
+  width: var(--post-w);
+  height: var(--post-h);
 }
 
 .list-comment {
   width: 200px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 
 .list-body {
@@ -171,6 +184,24 @@ input[type="button"], input[type="submit"], button {
 .error-message {
   font-size: 0.8rem;
   color: red;
+}
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
 }
 
 footer {
