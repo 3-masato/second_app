@@ -170,14 +170,15 @@ input[type="button"], input[type="submit"], button {
   border-radius: 4px;
   cursor: pointer;
   filter: none;
-  transition: ease-out 120ms;
+  transition: filter ease-out 120ms;
 }
 
 :is(input[type="button"], input[type="submit"], button):hover {
-  filter: saturate(1.5);
+  filter: saturate(2);
 }
 
 :is(input[type="button"], input[type="submit"], button):active {
+  transition-duration: 80ms;
   filter: saturate(0.5);
 }
 
@@ -187,7 +188,7 @@ input[type="button"], input[type="submit"], button {
 }
 
 .flash-message {
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 16px 24px;
   margin: 16px 0px;
 }
